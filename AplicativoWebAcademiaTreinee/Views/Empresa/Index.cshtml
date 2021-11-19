@@ -1,6 +1,127 @@
 ﻿@{
     ViewData["Title"] = "Empresa";
 }
-<div class="text-center">
-    teste
-</div>
+
+<section class="container" id="formulario">
+    <div class="mx-auto w-50 text-center mb-5">
+        <h1>Cadastro de Empresa</h1>
+    </div>
+    <form class="row g-3 needs-validation" novalidate>
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Nome da empresa</label>
+            <input type="text" class="form-control" id="validationCustom01" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>            
+            <div class="invalid-feedback">
+                Por favor, informe o nome da empresa.
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustom02" class="form-label">Nome Fantasia</label>
+            <input type="text" class="form-control" id="validationCustom02" required>
+            <div class="valid-feedback">
+                Looks good!
+            </div>
+            <div class="invalid-feedback">
+                Por favor, informe o nome fantasia.
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label for="validationCustomUsername" class="form-label">CNPJ</label>
+            <div class="input-group has-validation">
+                @*<span class="input-group-text" id="inputGroupPrepend"></span>*@
+                <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    Por favor, informe o CNPJ.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="validationCustom03" required>
+            <div class="invalid-feedback">
+                Por favor, selecione uma cidade.
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom04" class="form-label">Estado</label>
+            <select class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Escolher...</option>
+                <option>Acre</option>
+                <option>Alagoas</option>
+                <option>Amapá</option>
+                <option>Amazonas</option>
+                <option>Bahia</option>
+                <option>Ceará</option>
+                <option>Espírito Santo</option>
+                <option>Goiás</option>
+                <option>Maranhão</option>
+                <option>Mato Grosso</option>
+                <option>Mato Grosso do Sul</option>
+                <option>Minas Gerais</option>
+                <option>Pará</option>
+                <option>Paraíba</option>
+                <option>Paraná</option>
+                <option>Pernambuco</option>
+                <option>Piauí</option>
+                <option>Rio de Janeiro</option>
+                <option>Rio Grande do Norte</option>
+                <option>Rio Grande do Sul</option>
+                <option>Rondônia</option>
+                <option>Roraima</option>
+                <option>Santa Catarina</option>
+                <option>São Paulo</option>
+                <option>Sergipe</option>
+                <option>Tocantins</option>
+                <option>Distrito Federal</option>
+            </select>
+            <div class="invalid-feedback">
+                Por favor, selecione um estado.
+            </div>
+        </div>
+        <div class="col-md-3">
+            <label for="validationCustom05" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="validationCustom05" required>
+            <div class="invalid-feedback">
+                Por favor, informe um CEP válido.
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <label class="form-check-label" for="invalidCheck">
+                    Declaro que todas as informações acima são verdadeiras.
+                </label>
+                <div class="invalid-feedback">
+                    Você deve aceitar este campo para continuar.
+                </div>
+            </div>
+        </div>
+        <div class="col-12 mt-3 mb-5">
+            <button class="btn btn-primary" type="submit">Cadastrar</button>
+        </div>
+    </form>
+</section>
+
+<script>
+        (function () {
+      'use strict'
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll('.needs-validation')
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+</script>
