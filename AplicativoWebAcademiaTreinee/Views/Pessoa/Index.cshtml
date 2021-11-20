@@ -3,10 +3,11 @@
 }
 
  <div>
-   <input type="text" maxlength="11" onkeypress="soNumero(this)" onblur="mascaraDeTelefone(this)" 
+   <input type="text" maxlength="11" onkeypress="filtroNumero(this)" onblur="mascaraDeTelefone(this)" 
           placeholder="9999-9999 ou 9999-99999" 
           onfocus="soNumero(this)"/>    
  </div>
  <button class="btn" onclick="verificar()">Olá</button>
 
+<script src="~/js/utils.js" />
 <script src="~/js/pessoa.js" />
