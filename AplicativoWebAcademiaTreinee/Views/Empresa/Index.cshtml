@@ -8,21 +8,21 @@
     </div>
     <form class="row g-3 needs-validation" novalidate>
         <div class="col-md-4">
-            <label for="validationCustom01" class="form-label">Nome da empresa</label>
-            <input type="text" class="form-control" id="validationCustom01" required>
-            <div class="valid-feedback">
+            <label class="form-label">Nome da empresa</label>
+            <input type="text" class="form-control" required>
+            @*<div class="valid-feedback">
                 Looks good!
-            </div>            
+                </div>*@
             <div class="invalid-feedback">
                 Por favor, informe o nome da empresa.
             </div>
         </div>
         <div class="col-md-4">
-            <label for="validationCustom02" class="form-label">Nome Fantasia</label>
-            <input type="text" class="form-control" id="validationCustom02" required>
-            <div class="valid-feedback">
+            <label class="form-label">Nome Fantasia</label>
+            <input type="text" class="form-control" required>
+            @*<div class="valid-feedback">
                 Looks good!
-            </div>
+                </div>*@
             <div class="invalid-feedback">
                 Por favor, informe o nome fantasia.
             </div>
@@ -31,22 +31,22 @@
             <label for="validationCustomUsername" class="form-label">CNPJ</label>
             <div class="input-group has-validation">
                 @*<span class="input-group-text" id="inputGroupPrepend"></span>*@
-                <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                <input type="text" class="form-control" id="validationCustomCnpj" onkeypress="MascaraCNPJ()" maxlength=18 required>
                 <div class="invalid-feedback">
                     Por favor, informe o CNPJ.
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">Cidade</label>
-            <input type="text" class="form-control" id="validationCustom03" required>
+            <label class="form-label">Cidade</label>
+            <input type="text" class="form-control" required>
             <div class="invalid-feedback">
                 Por favor, selecione uma cidade.
             </div>
         </div>
         <div class="col-md-3">
-            <label for="validationCustom04" class="form-label">Estado</label>
-            <select class="form-select" id="validationCustom04" required>
+            <label class="form-label">Estado</label>
+            <select class="form-select" required>
                 <option selected disabled value="">Escolher...</option>
                 <option>Acre</option>
                 <option>Alagoas</option>
@@ -81,8 +81,8 @@
             </div>
         </div>
         <div class="col-md-3">
-            <label for="validationCustom05" class="form-label">CEP</label>
-            <input type="text" class="form-control" id="validationCustom05" required>
+            <label class="form-label">CEP</label>
+            <input type="text" class="form-control" id="validationCustomCep" maxlength=9 onkeypress="MascaraCEP()" required>
             <div class="invalid-feedback">
                 Por favor, informe um CEP válido.
             </div>
@@ -104,24 +104,4 @@
     </form>
 </section>
 
-<script>
-        (function () {
-      'use strict'
-
-      // Fetch all the forms we want to apply custom Bootstrap validation styles to
-      var forms = document.querySelectorAll('.needs-validation')
-
-      // Loop over them and prevent submission
-      Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-          form.addEventListener('submit', function (event) {
-            if (!form.checkValidity()) {
-              event.preventDefault()
-              event.stopPropagation()
-            }
-
-            form.classList.add('was-validated')
-          }, false)
-        })
-    })()
-</script>
+<script src="~/js/empresa.js" />
