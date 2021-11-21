@@ -2,41 +2,77 @@
     ViewData["Title"] = "Empresa";
 }
 
-<section class="container" id="formulario">
-    <div class="mx-auto w-50 text-center mb-5">
-        <h1>Cadastro de Empresa</h1>
+<section class="container p-3" style="background-color: rgb(245,245,245)" id="formulario">
+    <div class="mx-auto w-50 mb-5 d-flex justify-content-center align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-clipboard-plus me-3" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+        </svg>
+        <h1 style="font-family: 'Open Sans'">Cadastro de Empresa</h1>
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-clipboard-plus ms-3" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V10H6a.5.5 0 0 1 0-1h1.5V7.5A.5.5 0 0 1 8 7z" />
+            <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z" />
+            <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
+        </svg>
     </div>
     <form class="row g-3 needs-validation" novalidate>
+
+        <!--Nome da empresa-->
         <div class="col-md-4">
             <label class="form-label">Nome da empresa</label>
-            <input type="text" class="form-control" required>
-            @*<div class="valid-feedback">
-                Looks good!
-                </div>*@
-            <div class="invalid-feedback">
-                Por favor, informe o nome da empresa.
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
+                        <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
+                    </svg>
+                </span>
+                <input type="text" class="form-control" required>
+                <div class="invalid-feedback">
+                    Por favor, informe o nome da empresa.
+                </div>
             </div>
         </div>
+
+        <!--Nome Fantasia-->
         <div class="col-md-4">
             <label class="form-label">Nome Fantasia</label>
-            <input type="text" class="form-control" required>
-            @*<div class="valid-feedback">
-                Looks good!
-                </div>*@
+            <div class="input-group has-validation">
+                <span class="input-group-text" id="inputGroupPrepend">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z" />
+                        <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
+                    </svg>
+                </span>
+                <input type="text" class="form-control" required>
+                <div class="invalid-feedback">
+                    Por favor, informe o Nome Fantasia.
+                </div>
+            </div>
             <div class="invalid-feedback">
                 Por favor, informe o nome fantasia.
             </div>
         </div>
+
+        <!--CNPJ-->
         <div class="col-md-4">
             <label for="validationCustomUsername" class="form-label">CNPJ</label>
             <div class="input-group has-validation">
-                @*<span class="input-group-text" id="inputGroupPrepend"></span>*@
-                <input type="text" class="form-control" id="validationCustomCnpj" placeholder="XX.XXX.XXX/XXXX-XX" onkeypress="filtroNumero(this)" onblur="mascaraDeCnpj(this)" maxlength=14 required>
+                <span class="input-group-text" id="inputGroupPrepend">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-square" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
+                    </svg>
+                </span>
+                <input type="text" class="form-control" id="validationCustomCnpj" placeholder="XX.XXX.XXX/XXXX-XX" onkeypress="filtroNumero(this)" onblur="mascaraDeCnpj(this)" onfocus="filtroNumero(this)" maxlength=14 required>
                 <div class="invalid-feedback">
                     Por favor, informe o CNPJ.
                 </div>
             </div>
         </div>
+
+        <!--Cidade-->
         <div class="col-md-6">
             <label class="form-label">Cidade</label>
             <input type="text" class="form-control" onkeypress="filtroCaractere(this)" required>
@@ -44,6 +80,8 @@
                 Por favor, informe uma cidade.
             </div>
         </div>
+
+        <!--Estado-->
         <div class="col-md-3">
             <label class="form-label">Estado</label>
             <select class="form-select" required>
@@ -80,13 +118,17 @@
                 Por favor, selecione um estado.
             </div>
         </div>
+
+        <!--CEP-->
         <div class="col-md-3">
             <label class="form-label">CEP</label>
-            <input type="text" class="form-control" id="validationCustomCep" placeholder="XXXXX-XXX" onblur="mascaraDeCep(this)" onkeypress="filtroNumero(this)" maxlength=8 required>
+            <input type="text" class="form-control" id="validationCustomCep" placeholder="XXXXX-XXX" onblur="mascaraDeCep(this)" onfocus="filtroNumero(this)" onkeypress="filtroNumero(this)" maxlength=8 required>
             <div class="invalid-feedback">
                 Por favor, informe um CEP válido.
             </div>
         </div>
+
+        <!--Botão de checagem-->
         <div class="col-12">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
@@ -98,11 +140,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 mt-3 mb-5">
-            <button class="btn btn-primary" type="submit">Cadastrar</button>
+
+        <!--Botão de enviar formulário-->
+        <div class="col-12 mt-4 mb-3">
+            <button class="btn btn-primary" type="submit">Enviar</button>
         </div>
     </form>
 </section>
-
-<script src="~/js/utils.js" />
-<script src="~/js/empresa.js" />

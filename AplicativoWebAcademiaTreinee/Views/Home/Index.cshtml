@@ -3,12 +3,11 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Bem-vindo @DateTime.Now</h1>
-
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold text-center">Academia Treinee Vixteam</h1>
-        <p class="fs-4">Este site foi desenvolvido durante a Academia Vixteam! Clique no botão abaixo para acessar o conteúdo do nosso projeto!</p>
-        <button class="btn btn-success btn-lg" onclick="alert('Manutenção: O dashboard ainda não está disponível. Por favor, tente outro dia')" type="button">Acessar dashboard!</button>
-        <a asp-area="" asp-controller="Home" asp-action="Privacy"><button class="btn btn-dark btn-lg" type="button">Privacy</button></a>
+      <div class="container-fluid">
+        <h1 class="display-5 fw-bold text-center" style="color: rgb(150,30,30)">Academia Treinee Vixteam</h1>
+        <p class="fs-4 pb-3" style="color: rgb(18,25,100); font-weight: 500">Este site foi desenvolvido durante a Academia Vixteam! Clique no botão abaixo para acessar o conteúdo do nosso projeto!</p>
+        <button class="me-3 btn btn-success btn-lg" onclick="alert('Manutenção: O dashboard ainda não está disponível. Por favor, tente outro dia')" type="button">Acessar dashboard!</button>
+        <a asp-area="" asp-controller="Home" asp-action="Privacy"><button class="btn btn-lg" style="background-color: rgb(44,66,117); color: white" type="button">Privacy</button></a>
       </div>
+    <p class="mt-4">@DateTime.Now</p>
 </div>
