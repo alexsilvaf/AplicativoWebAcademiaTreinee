@@ -1,4 +1,5 @@
-﻿@{
+﻿@model EmpresaModel
+@{
     ViewData["Title"] = "Empresa";
 }
 
@@ -16,7 +17,7 @@
             <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z" />
         </svg>
     </div>
-    <form class="row g-3 needs-validation" novalidate>
+    <form asp-action="Create" class="row g-3 needs-validation" novalidate>
 
         <!--Nome da empresa-->
         <div class="col-md-4">
@@ -28,7 +29,7 @@
                         <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
                     </svg>
                 </span>
-                <input type="text" class="form-control textoEmpresa" required>
+                <input asp-for="Nome" type="text" class="form-control" required>
                 <div class="invalid-feedback">
                     Por favor, informe o nome da empresa.
                 </div>
@@ -45,7 +46,7 @@
                         <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
                     </svg>
                 </span>
-                <input type="text" class="form-control textoEmpresa" id="nomeFantasiaEmpresa" required>
+                <input asp-for="NomeFantasia" type="text" class="form-control" id="nomeFantasiaEmpresa" required>
                 <div class="invalid-feedback">
                     Por favor, informe o Nome Fantasia.
                 </div>
@@ -65,7 +66,7 @@
                         <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
                     </svg>
                 </span>
-                <input type="text" class="form-control" id="validationCustomCnpj"required>
+                <input asp-for="CNPJ" type="text" class="form-control" id="validationCustomCnpj"required>
                 <div class="invalid-feedback">
                     Por favor, informe o CNPJ.
                 </div>
@@ -144,7 +145,7 @@
 
         <!--Botão de enviar formulário-->
         <div class="col-12 mt-4 mb-3">
-            <button class="btn btn-primary" type="submit">Enviar</button>
+            <button value="Create" class="btn btn-primary" type="submit">Enviar</button>
         </div>
     </form>
 </section>
