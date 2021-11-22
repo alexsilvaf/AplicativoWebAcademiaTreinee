@@ -28,7 +28,7 @@
                         <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
                     </svg>
                 </span>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control textoEmpresa" required>
                 <div class="invalid-feedback">
                     Por favor, informe o nome da empresa.
                 </div>
@@ -45,7 +45,7 @@
                         <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
                     </svg>
                 </span>
-                <input type="text" class="form-control" required>
+                <input type="text" class="form-control textoEmpresa" id="nomeFantasiaEmpresa" required>
                 <div class="invalid-feedback">
                     Por favor, informe o Nome Fantasia.
                 </div>
@@ -65,7 +65,7 @@
                         <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
                     </svg>
                 </span>
-                <input type="text" class="form-control" id="validationCustomCnpj" placeholder="XX.XXX.XXX/XXXX-XX" onkeypress="filtroNumero(this)" onblur="mascaraDeCnpj(this)" onfocus="filtroNumero(this)" maxlength=14 required>
+                <input type="text" class="form-control" id="validationCustomCnpj"required>
                 <div class="invalid-feedback">
                     Por favor, informe o CNPJ.
                 </div>
@@ -75,7 +75,7 @@
         <!--Cidade-->
         <div class="col-md-6">
             <label class="form-label">Cidade</label>
-            <input type="text" class="form-control" onkeypress="filtroCaractere(this)" required>
+            <input type="text" class="form-control textoEmpresa" id="cidadeEmpresa" required>
             <div class="invalid-feedback">
                 Por favor, informe uma cidade.
             </div>
@@ -123,7 +123,7 @@
         <!--CEP-->
         <div class="col-md-3">
             <label class="form-label">CEP</label>
-            <input type="text" class="form-control" id="validationCustomCep" placeholder="XXXXX-XXX" onblur="mascaraDeCep(this)" onfocus="filtroNumero(this)" onkeypress="filtroNumero(this)" maxlength=8 required>
+            <input type="text" class="form-control" id="validationCustomCep" required>
             <div class="invalid-feedback">
                 Por favor, informe um CEP válido.
             </div>

@@ -139,3 +139,19 @@ function filtroNumero(texto) { //Impede o usuário de colocar caracteres. Recolh
             }, false)
         })
 })()
+
+$(document).ready(function () {
+    var texto = {
+        'translation' : {
+            A: {
+                pattern: /[A-Za-z ]/,
+                optional: true
+            }
+        }
+    };
+
+    //FORMATAÇÃO DOS CAMPOS NO FORUMULÁRIO    
+    $('#validationCustomCnpj').mask('00.000.000/0000-00', { placeholder: '00.000.000/0000-00' }) //CNPJ
+    $('#validationCustomCep').mask('00.000-000', { placeholder: '00.000-000' }) //CEP
+    $('.textoEmpresa').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', texto)
+});
