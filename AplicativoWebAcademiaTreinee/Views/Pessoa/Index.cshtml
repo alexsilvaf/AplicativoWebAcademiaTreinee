@@ -1,12 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Pessoa";
 }
+@model PessoaModel
 
- <div>
-   <input type="text" maxlength="11" onkeypress="filtroNumero(this)" onblur="mascaraDeTelefone(this)"
-          placeholder="9999-9999 ou 9999-99999"
-          onfocus="filtroNumero(this)"/>    
- </div>
  <button class="btn" onclick="verificar()">Olá</button>
 
 <script src="~/js/site.js" />
