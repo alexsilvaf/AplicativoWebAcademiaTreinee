@@ -58,7 +58,7 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         {
             //if (ModelState.IsValid)
             {
-                pessoaModel.Alterar = "Ativo";
+                pessoaModel.Situacao = "Ativo";
                 _context.Add(pessoaModel);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -87,35 +87,32 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Codigo, Alterar,Nome,Email,DataNascimento,QuantidadeFilhos,Salario")] PessoaModel pessoaModel)
+        public async Task<IActionResult> Edit(int id, [Bind("Codigo, Situacao,Nome,Email,DataNascimento,QuantidadeFilhos,Salario")] PessoaModel pessoaModel)
         {
             if (id != pessoaModel.Codigo)
             {
                 return NotFound();
             }
 
-            if (pessoaModel.Alterar != "Inativo")
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                try
                 {
-                    try
-                    {
-                        _context.Update(pessoaModel);
-                        await _context.SaveChangesAsync();
-                    }
-                    catch (DbUpdateConcurrencyException)
-                    {
-                        if (!PessoaModelExists(pessoaModel.Codigo))
-                        {
-                            return NotFound();
-                        }
-                        else
-                        {
-                            throw;
-                        }
-                    }
-                    return RedirectToAction(nameof(Index));
+                    _context.Update(pessoaModel);
+                    await _context.SaveChangesAsync();
                 }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!PessoaModelExists(pessoaModel.Codigo))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
             }
             return View(pessoaModel);
         }
@@ -158,7 +155,7 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         {
             PessoaModel pessoa = _context.PessoaModel.FirstOrDefault(x => x.Codigo == codigo);
             return (value.Equals("Ativo")) ? "Inativo" : "Ativo";
-            
+
         }
     }
 }
