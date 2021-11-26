@@ -56,13 +56,37 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Codigo,Nome,Email,DataNascimento,QuantidadeFilhos,Salario")] PessoaModel pessoaModel)
         {
-            //if (ModelState.IsValid)
+
+            if (pessoaModelEmailExists(pessoaModel.Email, pessoaModel))
             {
-                pessoaModel.Situacao = "Ativo";
-                _context.Add(pessoaModel);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("", "Erro: O e-mail informado já está cadastrado.");
+                return View();
             }
+            if (pessoaModel.DataNascimento <= DateTime.Parse("12/09/1990").Date)
+            {
+                ModelState.AddModelError("", "Erro: A data não pode ser anterior à 01/01/1990");
+                return View();
+            }
+            if (pessoaModel.QuantidadeFilhos < 0)
+            {
+                ModelState.AddModelError("", "Erro: A quantidade de filhos não pdoe ser menor que 0.");
+                return View();
+            }
+            if (pessoaModel.Salario < 1200)
+            {
+                ModelState.AddModelError("", "Erro: O salário não pode ser inferior à 1.200,00");
+                return View();
+            }
+            if (pessoaModel.Salario > 13000)
+            {
+                ModelState.AddModelError("", "Erro: O salário não pode ser superior à 13.000,00");
+                return View();
+            }
+
+            pessoaModel.Situacao = "Ativo";
+            _context.Add(pessoaModel);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
             return View(pessoaModel);
         }
 
@@ -79,6 +103,11 @@ namespace AplicativoWebAcademiaTreinee.Controllers
             {
                 return NotFound();
             }
+            if(pessoaModel.Situacao == "Inativo")
+            {
+                ModelState.AddModelError("", "Não é possível cadastrar uma pessoa inativa");
+                return RedirectToAction(nameof(Index));
+            }
             return View(pessoaModel);
         }
 
@@ -88,33 +117,54 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Codigo, Situacao,Nome,Email,DataNascimento,QuantidadeFilhos,Salario")] PessoaModel pessoaModel)
-        {
+        {            
+            if (pessoaModelEmailExists(pessoaModel.Email, pessoaModel))
+            {
+                ModelState.AddModelError("", "Erro: O e-mail informado já está cadastrado.");
+                return View();
+            }
             if (id != pessoaModel.Codigo)
             {
                 return NotFound();
             }
-
-            if (ModelState.IsValid)
+            if (pessoaModel.DataNascimento <= DateTime.Parse("12/09/1990").Date)
             {
-                try
-                {
-                    _context.Update(pessoaModel);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PessoaModelExists(pessoaModel.Codigo))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("", "Erro: A data não pode ser anterior à 01/01/1990");
+                return View();
             }
-            return View(pessoaModel);
+            if (pessoaModel.QuantidadeFilhos < 0)
+            {
+                ModelState.AddModelError("", "Erro: A quantidade de filhos não pdoe ser menor que 0.");
+                return View();
+            }
+            if (pessoaModel.Salario < 1200)
+            {
+                ModelState.AddModelError("", "Erro: O salário não pode ser inferior à 1.200,00");
+                return View();
+            }
+            if (pessoaModel.Salario > 13000)
+            {
+                ModelState.AddModelError("", "Erro: O salário não pode ser superior à 13.000,00");
+                return View();
+            }
+
+            try
+            {
+                _context.Update(pessoaModel);
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!PessoaModelExists(pessoaModel.Codigo))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: PessoaModels/Delete/5
@@ -141,21 +191,43 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var pessoaModel = await _context.PessoaModel.FindAsync(id);
-            _context.PessoaModel.Remove(pessoaModel);
-            await _context.SaveChangesAsync();
+            if (pessoaModel.Situacao.Equals("Inativo"))
+            {
+                _context.PessoaModel.Remove(pessoaModel);
+                await _context.SaveChangesAsync();
+            }
             return RedirectToAction(nameof(Index));
         }
 
+        //Verifica se o id da pessoa já existe no banco de dados.
         private bool PessoaModelExists(int id)
         {
             return _context.PessoaModel.Any(e => e.Codigo == id);
         }
 
-        public string Switch(string value, int codigo)
+        //Verifica se o email inserido no formulário já existe.
+        private bool pessoaModelEmailExists(string email, PessoaModel pessoaModel)
         {
-            PessoaModel pessoa = _context.PessoaModel.FirstOrDefault(x => x.Codigo == codigo);
-            return (value.Equals("Ativo")) ? "Inativo" : "Ativo";
+            return _context.PessoaModel.Any(e => e.Email == email && e.Codigo != pessoaModel.Codigo);;
+        }
 
+
+        //Pega o ID do objeto passado e altera a Situcação do mesmo.
+        [HttpGet]
+        public async Task<IActionResult> alterarStatus(int id)
+        {
+            var pessoaModel = await _context.PessoaModel.FindAsync(id);
+            if (pessoaModel.Situacao.Equals("Ativo"))
+            {
+                pessoaModel.Situacao = "Inativo";
+            }
+            else
+            {
+                pessoaModel.Situacao = "Ativo";
+            }
+            _context.Update(pessoaModel);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
     }
 }

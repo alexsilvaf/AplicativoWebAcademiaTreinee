@@ -50,15 +50,23 @@
                     @Html.DisplayFor(modelItem => item.QuantidadeFilhos)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Salario)
+                    @Html.DisplayFor(modelItem => item.Salario)                    
                 </td>
                 <td>
-                   @Html.DisplayFor(modelItem => item.Situacao) 
+                    @Html.DisplayFor(modelItem => item.Situacao)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Codigo">Edit</a> |
+                    @if (item.Situacao.Equals("Inativo"))
+                    {
+                        <div class="d-inline" style="color: rgb(150,150,150);"><u>Edit</u></div>
+                    }
+                    else
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Codigo">Edit</a>
+                    } |
                     <a asp-action="Details" asp-route-id="@item.Codigo">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Codigo">Delete</a> |
+                    <a asp-action="alterarStatus" asp-route-id="@item.Codigo">Alterar Status</a>
                 </td>
             </tr>
         }

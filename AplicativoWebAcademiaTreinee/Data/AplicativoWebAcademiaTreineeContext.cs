@@ -15,5 +15,10 @@ namespace AplicativoWebAcademiaTreinee.Data
         }
 
         public DbSet<AplicativoWebAcademiaTreinee.Models.PessoaModel> PessoaModel { get; set; }
+
+        internal bool Find(string email)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
