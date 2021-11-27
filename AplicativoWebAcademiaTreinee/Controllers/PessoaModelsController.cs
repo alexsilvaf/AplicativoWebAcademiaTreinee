@@ -103,15 +103,23 @@ namespace AplicativoWebAcademiaTreinee.Controllers
             }
 
             var pessoaModel = await _context.PessoaModel.FindAsync(id);
+
             if (pessoaModel == null)
             {
                 return NotFound();
             }
-            if (pessoaModel.Situacao == "Inativo")
+
+            if (pessoaModel.Situacao == null)
+            {
+                pessoaModel.Situacao = "Ativo";
+            }
+
+            if (pessoaModel.Situacao.Equals("Inativo"))
             {
                 ModelState.AddModelError("", "Não é possível editar uma pessoa inativa");
                 return RedirectToAction(nameof(Index));
             }
+
             return View(pessoaModel);
         }
 
@@ -121,7 +129,7 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Codigo, Situacao,Nome,Email,DataNascimento,QuantidadeFilhos,Salario")] PessoaModel pessoaModel)
-        {
+        {            
             if(pessoaModel.Email == null)
             {
                 throw new Exception("E-mail não pode ser vazio");
@@ -136,7 +144,7 @@ namespace AplicativoWebAcademiaTreinee.Controllers
             {
                 return NotFound();
             }
-            if (pessoaModel.DataNascimento <= DateTime.Parse("12/09/1990").Date)
+            if (pessoaModel.DataNascimento <= DateTime.Parse("01/01/1990").Date)
             {
                 ModelState.AddModelError("", "Erro: A data não pode ser anterior à 01/01/1990");
                 return View();
