@@ -57,6 +57,11 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         public async Task<IActionResult> Create([Bind("Codigo,Nome,Email,DataNascimento,QuantidadeFilhos,Salario")] PessoaModel pessoaModel)
         {
 
+            if(pessoaModel.Email == null)
+            {
+                throw new Exception("Email não pode ser vazio");
+            }
+
             if (pessoaModelEmailExists(pessoaModel.Email, pessoaModel))
             {
                 ModelState.AddModelError("", "Erro: O e-mail informado já está cadastrado.");
@@ -87,7 +92,6 @@ namespace AplicativoWebAcademiaTreinee.Controllers
             _context.Add(pessoaModel);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-            return View(pessoaModel);
         }
 
         // GET: PessoaModels/Edit/5
@@ -103,9 +107,9 @@ namespace AplicativoWebAcademiaTreinee.Controllers
             {
                 return NotFound();
             }
-            if(pessoaModel.Situacao == "Inativo")
+            if (pessoaModel.Situacao == "Inativo")
             {
-                ModelState.AddModelError("", "Não é possível cadastrar uma pessoa inativa");
+                ModelState.AddModelError("", "Não é possível editar uma pessoa inativa");
                 return RedirectToAction(nameof(Index));
             }
             return View(pessoaModel);
@@ -117,7 +121,12 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Codigo, Situacao,Nome,Email,DataNascimento,QuantidadeFilhos,Salario")] PessoaModel pessoaModel)
-        {            
+        {
+            if(pessoaModel.Email == null)
+            {
+                throw new Exception("E-mail não pode ser vazio");
+            }
+
             if (pessoaModelEmailExists(pessoaModel.Email, pessoaModel))
             {
                 ModelState.AddModelError("", "Erro: O e-mail informado já está cadastrado.");
@@ -148,22 +157,8 @@ namespace AplicativoWebAcademiaTreinee.Controllers
                 return View();
             }
 
-            try
-            {
-                _context.Update(pessoaModel);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PessoaModelExists(pessoaModel.Codigo))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            _context.Update(pessoaModel);
+            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
@@ -191,12 +186,25 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var pessoaModel = await _context.PessoaModel.FindAsync(id);
+            
+            if (pessoaModel == null)
+            {
+                throw new Exception("Valor ID não encontrado.");
+            }
+
+            if (pessoaModel.Situacao == null)
+            {
+                pessoaModel.Situacao = "Ativo";
+            }
+
             if (pessoaModel.Situacao.Equals("Inativo"))
             {
                 _context.PessoaModel.Remove(pessoaModel);
                 await _context.SaveChangesAsync();
             }
+
             return RedirectToAction(nameof(Index));
+
         }
 
         //Verifica se o id da pessoa já existe no banco de dados.
@@ -208,7 +216,7 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         //Verifica se o email inserido no formulário já existe.
         private bool pessoaModelEmailExists(string email, PessoaModel pessoaModel)
         {
-            return _context.PessoaModel.Any(e => e.Email == email && e.Codigo != pessoaModel.Codigo);;
+            return _context.PessoaModel.Any(e => e.Email == email && e.Codigo != pessoaModel.Codigo); ;
         }
 
 
@@ -217,6 +225,21 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         public async Task<IActionResult> alterarStatus(int id)
         {
             var pessoaModel = await _context.PessoaModel.FindAsync(id);
+
+            if (pessoaModel == null)
+            {
+                throw new Exception("Valor não encontrado");
+            }
+
+            if (pessoaModel.Situacao == null)
+            {
+                pessoaModel.Situacao = "Ativo";
+            }
+            if(pessoaModel == null)
+            {
+                throw new Exception("Valor não encontrado");
+            }
+
             if (pessoaModel.Situacao.Equals("Ativo"))
             {
                 pessoaModel.Situacao = "Inativo";
