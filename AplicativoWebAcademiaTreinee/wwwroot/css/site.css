@@ -32,57 +32,60 @@ body {
     text-decoration: none;
     color: white;
     background-color: rgb(128, 128, 128);
-    font-size: 14px !important;
+}
+
+.link-disabled:hover {
+    color: white;
 }
 
 .link-edit {
     text-decoration: none;
     color: white;
     background-color: rgb(43, 88, 216);
-    font-size: 14px !important;
 }
 
     .link-edit:hover {
         transition: 0.25s;
         color: white;
-        background-color: rgb(81, 127, 254);
+        background-color: rgb(28, 53, 111);
     }
 
 .link-details {
     text-decoration: none;
     color: white;
-    background-color: rgb(53, 139, 16);
-    font-size: 14px !important;
+    background-color: rgb(209, 160, 24);
 }
 
     .link-details:hover {
         transition: 0.25s;
         color: white;
-        background-color: rgb(67, 172, 22);
+        background-color: rgb(160, 134, 11);
     }
 
 .link-delete {
     text-decoration: none;
     color: white;
     background-color: rgb(161, 12, 12);
-    font-size: 14px !important;
 }
 
     .link-delete:hover {
         transition: 0.25s;
         color: white;
-        background-color: rgb(255, 0, 0);
+        background-color: rgb(122, 14, 14);
     }
 
-.link-alterar-status {
-    text-decoration: none;
-    color: white;
-    font-size: 14px !important;
-    background-color: rgb(255, 106, 0);
+.link-alterar-status-on {
+    color: rgb(53, 139, 16);
 }
 
-    .link-alterar-status:hover {
-        transition: 0.25s;
-        color: white;
-        background-color: rgb(255, 150, 0);
+    .link-alterar-status-on:hover {
+        color: rgb(53, 139, 16);
     }
+
+.link-alterar-status-off {
+    color: rgb(161, 12, 12);
+}
+
+.link-alterar-status-off:hover {
+    color: rgb(161, 12, 12);
+}
