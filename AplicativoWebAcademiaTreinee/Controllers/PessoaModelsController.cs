@@ -64,7 +64,7 @@ namespace AplicativoWebAcademiaTreinee.Controllers
 
             if (pessoaModelEmailExists(pessoaModel.Email, pessoaModel))
             {
-                ModelState.AddModelError("", "Erro: O e-mail informado já está cadastrado.");
+                ModelState.AddModelError("", "Erro: O E-mail informado já está cadastrado.");
                 return View();
             }
             if (pessoaModel.DataNascimento <= DateTime.Parse("12/09/1990").Date)

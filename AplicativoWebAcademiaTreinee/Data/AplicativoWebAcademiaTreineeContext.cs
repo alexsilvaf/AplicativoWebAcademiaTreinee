@@ -9,7 +9,7 @@ namespace AplicativoWebAcademiaTreinee.Data
 {
 
     public class AplicativoWebAcademiaTreineeContext : DbContext
-    {        
+    {
         public AplicativoWebAcademiaTreineeContext(DbContextOptions<AplicativoWebAcademiaTreineeContext> options)
             : base(options)
         {
