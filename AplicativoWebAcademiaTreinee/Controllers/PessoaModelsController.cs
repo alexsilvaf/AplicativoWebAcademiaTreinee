@@ -67,7 +67,7 @@ namespace AplicativoWebAcademiaTreinee.Controllers
                 ModelState.AddModelError("", "Erro: O E-mail informado já está cadastrado.");
                 return View();
             }
-            if (pessoaModel.DataNascimento <= DateTime.Parse("12/09/1990").Date)
+            if (pessoaModel.DataNascimento <= DateTime.Parse("01/01/1990").Date)
             {
                 ModelState.AddModelError("", "Erro: A data não pode ser anterior à 01/01/1990");
                 return View();

@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -60,22 +60,22 @@
                     <td>
                         @if (item.Situacao != null && item.Situacao.Equals("Inativo"))
                         {
-                            <div class="d-inline" style="color: rgb(150,150,150);"><u>Edit</u></div>
+                            <div class="d-inline rounded-pill px-1 link-disabled">Edit</div>
                         }
                         else
                         {
-                            <a asp-action="Edit" asp-route-id="@item.Codigo">Edit</a>
-                        } |
-                        <a asp-action="Details" asp-route-id="@item.Codigo">Details</a> |
+                            <a asp-action="Edit" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-edit">Edit</a>
+                        }
+                        <a asp-action="Details" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-details">Details</a>
                         @if (item.Situacao != null && item.Situacao.Equals("Ativo"))
                         {
-                            <div class="d-inline" style="color: rgb(150,150,150);"><u>Delete</u></div>
+                            <div class="d-inline rounded-pill px-1 link-disabled">Delete</div>
                         }
                         else
                         {
-                            <a asp-action="Delete" asp-route-id="@item.Codigo">Delete</a>
-                        } |
-                        <a asp-action="alterarStatus" asp-route-id="@item.Codigo">Alterar Status</a>
+                            <a asp-action="Delete" asp-route-id="@item.Codigo"  class="rounded-pill px-1 link-delete">Delete</a>
+                        }
+                        <a asp-action="alterarStatus" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-alterar-status">Alterar Status</a>
                     </td>
                 </tr>
             }
