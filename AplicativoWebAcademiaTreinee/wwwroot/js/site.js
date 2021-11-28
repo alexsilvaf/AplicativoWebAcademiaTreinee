@@ -12,6 +12,8 @@
  * https://web.fe.up.pt/~ee96100/projecto/Tabela%20ascii.htm
  */
 
+const { reverse } = require("node:dns/promises");
+
 //MÁSCARAS DE FORMATAÇÃO
 
 function mascaraDeCep(cep) { //Insere uma máscara de CEP no texto informado do tipo XXXXX-XX
@@ -149,9 +151,17 @@ $(document).ready(function () {
             }
         }
     };
+    var numero = {
+        'translation': {
+            0: {
+                pattern: /[0-9]/,
+                optional: true
+            }
+        }
+    }
 
     //FORMATAÇÃO DOS CAMPOS NO FORUMULÁRIO    
-    $('#validationCustomCnpj').mask('00.000.000/0000-00', { placeholder: '00.000.000/0000-00' }) //CNPJ
-    $('#validationCustomCep').mask('00.000-000', { placeholder: '00.000-000' }) //CEP
-    $('.textoEmpresa').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', texto)
+    $('#validationCustomCnpj').mask('00.000.000/0000-00', { placeholder: '00.000.000/0000-00' }); //CNPJ
+    $('#validationCustomCep').mask('00.000-000', { placeholder: '00.000-000' }); //CEP
+    $('.textoEmpresa').mask('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', texto);
 });

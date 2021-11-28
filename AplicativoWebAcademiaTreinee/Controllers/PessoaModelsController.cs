@@ -67,24 +67,29 @@ namespace AplicativoWebAcademiaTreinee.Controllers
                 ModelState.AddModelError("", "Erro: O E-mail informado já está cadastrado.");
                 return View();
             }
-            if (pessoaModel.DataNascimento <= DateTime.Parse("01/01/1990").Date)
+            if (pessoaModel.DataNascimento <= DateTime.Parse("01/01/1990"))
             {
-                ModelState.AddModelError("", "Erro: A data não pode ser anterior à 01/01/1990");
+                ModelState.AddModelError("", "Erro: A data não pode ser anterior a 01/01/1990");
+                return View();
+            }
+            if (pessoaModel.DataNascimento > DateTime.Now)
+            {
+                ModelState.AddModelError("", "Erro: A não ser que você tenha uma máquina do tempo, você não pode nascer no futuro!");
                 return View();
             }
             if (pessoaModel.QuantidadeFilhos < 0)
             {
-                ModelState.AddModelError("", "Erro: A quantidade de filhos não pdoe ser menor que 0.");
+                ModelState.AddModelError("", "Erro: A quantidade de filhos não pdoe ser negativa.");
                 return View();
             }
             if (pessoaModel.Salario < 1200)
             {
-                ModelState.AddModelError("", "Erro: O salário não pode ser inferior à 1.200,00");
+                ModelState.AddModelError("", "Erro: O salário não pode ser inferior a 1.200,00");
                 return View();
             }
             if (pessoaModel.Salario > 13000)
             {
-                ModelState.AddModelError("", "Erro: O salário não pode ser superior à 13.000,00");
+                ModelState.AddModelError("", "Erro: O salário não pode ser superior a 13.000,00");
                 return View();
             }
 
@@ -137,31 +142,36 @@ namespace AplicativoWebAcademiaTreinee.Controllers
 
             if (pessoaModelEmailExists(pessoaModel.Email, pessoaModel))
             {
-                ModelState.AddModelError("", "Erro: O e-mail informado já está cadastrado.");
+                ModelState.AddModelError("", "Erro: O E-mail informado já está cadastrado.");
                 return View();
             }
             if (id != pessoaModel.Codigo)
             {
                 return NotFound();
             }
-            if (pessoaModel.DataNascimento <= DateTime.Parse("01/01/1990").Date)
+            if (pessoaModel.DataNascimento <= DateTime.Parse("01/01/1990"))
             {
-                ModelState.AddModelError("", "Erro: A data não pode ser anterior à 01/01/1990");
+                ModelState.AddModelError("", "Erro: A data não pode ser anterior a 01/01/1990");
+                return View();
+            }
+            if (pessoaModel.DataNascimento > DateTime.Now)
+            {
+                ModelState.AddModelError("", "Erro: A não ser que você tenha uma máquina do tempo, você não pode nascer no futuro!");
                 return View();
             }
             if (pessoaModel.QuantidadeFilhos < 0)
             {
-                ModelState.AddModelError("", "Erro: A quantidade de filhos não pdoe ser menor que 0.");
+                ModelState.AddModelError("", "Erro: A quantidade de filhos não pdoe ser negativa.");
                 return View();
             }
             if (pessoaModel.Salario < 1200)
             {
-                ModelState.AddModelError("", "Erro: O salário não pode ser inferior à 1.200,00");
+                ModelState.AddModelError("", "Erro: O salário não pode ser inferior a 1.200,00");
                 return View();
             }
             if (pessoaModel.Salario > 13000)
             {
-                ModelState.AddModelError("", "Erro: O salário não pode ser superior à 13.000,00");
+                ModelState.AddModelError("", "Erro: O salário não pode ser superior a 13.000,00");
                 return View();
             }
 
