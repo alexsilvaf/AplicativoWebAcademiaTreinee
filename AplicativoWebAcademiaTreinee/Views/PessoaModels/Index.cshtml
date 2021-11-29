@@ -60,46 +60,46 @@
                     <td>
                         @if (item.Situacao != null && item.Situacao.Equals("Inativo"))
                         {
-                            <a class="rounded-pill px-1 link-disabled p-0 ps-2 me-1">
-                                <i class="fas fa-pencil-alt"></i> Editar
-                            </a>
+                        <a class="rounded-pill px-1 link-disabled p-0 ps-2 me-1">
+                        <i class="fas fa-pencil-alt"></i> Editar
+                        </a>
                         }
                         else
                         {
-                            <a asp-action="Edit" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-edit p-0 ps-2 me-1">
-                                <i class="fas fa-pencil-alt"></i> Editar
-                            </a>
+                        <a asp-action="Edit" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-edit ps-2 me-1">
+                        <i class="fas fa-pencil-alt"></i> Editar
+                        </a>
                         }
                         <a asp-action="Details" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-details ps-2 me-1">
-                            <i class="fas fa-address-card"></i> Detalhes
+                        <i class="fas fa-address-card"></i> Detalhes
                         </a>
                         @if (item.Situacao != null && item.Situacao.Equals("Ativo"))
                         {
 
-                            <div class="d-inline rounded-pill px-1 link-disabled ps-2 me-1">
-                                <i class="fas fa-user-times"></i> Deletar
-                            </div>
+                        <div class="d-inline rounded-pill px-1 link-disabled ps-2 me-1">
+                        <i class="fas fa-user-times"></i> Deletar
+                        </div>
                         }
                         else
                         {
-                            <a asp-action="Delete" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-delete ps-2 me-1">
-                                <i class="fas fa-user-times"></i> Deletar
-                            </a>
+                        <a asp-action="Delete" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-delete ps-2 me-1">
+                        <i class="fas fa-user-times"></i> Deletar
+                        </a>
                         }
 
                         @if (item.Situacao != null && item.Situacao.Equals("Ativo"))
                         {
-                            <a asp-action="alterarStatus" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-alterar-status-on ps-2">
-                                <img src="~/img/toggle-on.png"/>
-                            </a>
+                        <a asp-action="alterarStatus" asp-route-id="@item.Codigo">
+                        <img src="~/img/toggle-on.png" class="switch-onoff"/>
+                        </a>
                         }
                         else
                         {
-                            <a asp-action="alterarStatus" asp-route-id="@item.Codigo" class="rounded-pill px-1 link-alterar-status-off ps-2">
-                                <img src="~/img/toggle-off.png"/>
-                            </a>
+                        <a asp-action="alterarStatus" asp-route-id="@item.Codigo">
+                        <img src="~/img/toggle-off.png" class="switch-onoff"/>
+                        </a>
                         }
-                    </td>
+                        </td>
                 </tr>
             }
         }

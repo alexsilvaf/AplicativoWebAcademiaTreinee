@@ -151,14 +151,6 @@ $(document).ready(function () {
             }
         }
     };
-    var numero = {
-        'translation': {
-            0: {
-                pattern: /[0-9]/,
-                optional: true
-            }
-        }
-    }
 
     //FORMATAÇÃO DOS CAMPOS NO FORUMULÁRIO    
     $('#validationCustomCnpj').mask('00.000.000/0000-00', { placeholder: '00.000.000/0000-00' }); //CNPJ
