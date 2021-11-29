@@ -23,25 +23,42 @@ namespace AplicativoWebAcademiaTreinee.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind("Código, Nome, NomeFantasia, CNPJ")] EmpresaModel empresaModel)
         {
-            if(empresaModel.Nome == null || empresaModel.Nome.Equals(""))
+            int erro = 0;
+            string[,] errors = new string[3, 2];
+            if (empresaModel.Nome == null || empresaModel.Nome.Equals(""))
             {
-                ModelState.AddModelError("", "O nome da empresa não pode estar vazio");
-                return View("Index");
+                erro += 1;
+                errors[0, 0] = "Nome";
+                errors[0, 1] = "O nome da empresa não pode estar vazio";
             }
             if (empresaModel.NomeFantasia == null || empresaModel.NomeFantasia.Equals(""))
             {
-                ModelState.AddModelError("", "O nome fantasia da empresa não pode estar vazio");
-                return View("Index");
+                erro += 1;
+                errors[1, 0] = "NomeFantasia";
+                errors[1, 1] = "O nome fantasia da empresa não pode estar vazio";
             }
-            if (empresaModel.CNPJ == null || empresaModel.CNPJ.Equals(""))
+            if (empresaModel.CNPJ == null || empresaModel.CNPJ.Equals("") || empresaModel.CNPJ.Length != 14)
             {
-                ModelState.AddModelError("", "O CNPJ da empresa não pode estar vazio");
+                erro += 1;
+                errors[2, 0] = "CNPJ";
+                errors[2, 1] = "O CNPJ da empresa está incorreto";
+            }
+            if (erro > 0)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (errors[i, 0] != null)
+                    {
+                        ModelState.AddModelError(errors[i, 0], errors[i, 1]);
+                    }
+                }
                 return View("Index");
             }
 
             try
             {
-                return View("~/Views/Home/Index.cshtml");
+                ModelState.AddModelError("Codigo", "Empresa cadastrada com sucesso!");
+                return View("Index");
             }
             catch
             {

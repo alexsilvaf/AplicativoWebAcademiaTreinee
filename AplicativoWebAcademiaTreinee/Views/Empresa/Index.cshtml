@@ -30,11 +30,9 @@
                         <path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z" />
                     </svg>
                 </span>
-                <input asp-for="Nome" type="text" class="form-control" required>
-                <div class="invalid-feedback">
-                    Por favor, informe o nome da empresa.
-                </div>
+                <input asp-for="Nome" type="text" class="form-control d-block" required>
             </div>
+            <span asp-validation-for="Nome" class="text-danger"></span>
         </div>
 
         <!--Nome Fantasia-->
@@ -48,13 +46,8 @@
                     </svg>
                 </span>
                 <input asp-for="NomeFantasia" type="text" class="form-control" id="nomeFantasiaEmpresa" required>
-                <div class="invalid-feedback">
-                    Por favor, informe o Nome Fantasia.
-                </div>
             </div>
-            <div class="invalid-feedback">
-                Por favor, informe o nome fantasia.
-            </div>
+            <span asp-validation-for="NomeFantasia" class="text-danger"></span>
         </div>
 
         <!--CNPJ-->
@@ -68,10 +61,8 @@
                     </svg>
                 </span>
                 <input asp-for="CNPJ" type="number" class="form-control" id="validationCustomCnpj" required>
-                <div class="invalid-feedback">
-                    Por favor, informe o CNPJ.
-                </div>
             </div>
+            <span asp-validation-for="CNPJ" class="text-danger"></span>
         </div>
 
         <!--Cidade-->
@@ -145,8 +136,9 @@
         </div>
 
         <!--Botão de enviar formulário-->
-        <div class="col-12 mt-4 mb-3">
+        <div class="col-12 mt-4 mb-0">
             <button value="Create" class="btn btn-primary" type="submit">Enviar</button>
         </div>
+        <span asp-validation-for="Codigo" class="text-success"></span>
     </form>
 </section>

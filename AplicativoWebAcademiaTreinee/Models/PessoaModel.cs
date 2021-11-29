@@ -11,8 +11,7 @@ namespace AplicativoWebAcademiaTreinee.Models
         public string? Situacao { get; set; }
         public string? Nome { get; set; }
         public string? Email { get; set; }
-        [Display(Name = "Data de Nascimento")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date), Display(Name = "Data de Nascimento")]
         public DateTime DataNascimento { get; set; }
         [Display(Name = "Quantidade de Filhos")]
         public int QuantidadeFilhos { get; set; }
